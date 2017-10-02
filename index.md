@@ -1,4 +1,5 @@
-# Swarm City base layer protocol spec 1.0
+# Swarm City Protocol
+#### Version 0.0.1
 
 ## Index
 
