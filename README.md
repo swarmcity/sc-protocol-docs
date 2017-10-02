@@ -17,7 +17,7 @@
 
 ---
 ## <a name="connected"></a>Connected
-Connecting to socket.io, listen to event "Connected"
+Connecting to socket.io, listen to event "connected"
 
 Returns:
 
