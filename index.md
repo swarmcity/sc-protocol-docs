@@ -1,33 +1,109 @@
 # Swarm City base layer protocol spec 1.0
 
 ## Index
-[Connection](#connecting)
 
-- onconnect
-- ondisconnect
+#### Subscriptions
+- APIConnect
+- UserBalance
+- [Hashtags](#hashtags)
+- Deals
+- Deal
 
-User info
-### <a name="head1234"></a>A Heading in this SO entry!
+#### Calls
+
+- [userbalance](#userbalance)
+
+#### Connection
+- [connected](#connected)
+- [ondisconnect](#ondisconnect)
+
+#### User info
+
 - [userbalances]()
 
-Hashtag
+#### Hashtag
 
 - gethashtaglist
 - gethashtagdetail
 - createhashtag
 
-Deal
+#### Deal
 
 - getdeallist
 - getdealdetail
 - createdeal
 
-Chat
+#### Chat
 
 - messages subscribe
 - messages unsubscribe
 
-## [create an anchor](#anchors-in-markdown)
+---
+
+### UserBalance
+
+Subscribe:
+
+```
+{
+	channel: 'UserBalance',
+	args: {
+		pubkey: '0x...'
+	}
+}
+```
+
+Returns:
+
+```
+{ 
+	success: true,
+	balance: <number>,
+	subscription: subscriptionID
+}
+```
+
+Subscription events: 
+
+```
+{
+	pubkey: <string>,
+	balance: <number>
+}
+```
+
+Unsubscribe:
+
+```
+{ 	
+	subscription: subscriptionID
+}
+```
+
+Returns:
+
+```
+{ 
+	success: <boolean>
+}
+```
+
+
+
+## Connected
+First thing to do is connect to the websocket.
+
+```
+{version: '0.0.1' }
+```
+
+
+
+
+
+
+
+
 
 ## Notes
 
