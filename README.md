@@ -27,6 +27,10 @@ Returns:
 }
 ```
 
+Used in:
+
+https://github.com/swarmcity/sc-boardwalk-production/wiki/Welcome
+
 ---
 ## <a name="userbalance"></a>UserBalance
 
