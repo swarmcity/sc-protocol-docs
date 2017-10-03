@@ -36,9 +36,8 @@ Subscribes to the list of notifications for a specific user.
  * @param {string} description - The description of the notification
  * @param {string} title - The title of the notification
  * @param {string} link - The link / route for this notification
- * @param {string} dateTime - The timestamp for this notification
+ * @param {number} dateTime - The unix epoch for this notification
  * @param {boolean} read - Read / unread status for this notification
-
  */
  
 { 
@@ -49,7 +48,7 @@ Subscribes to the list of notifications for a specific user.
 		title: <String>,
 		description: <String>,
 		link: <String>,
-		dateTime: <String>
+		dateTime: <Number>
 		read: <Boolean>
 		},
 		{
@@ -57,7 +56,7 @@ Subscribes to the list of notifications for a specific user.
 		title: <String>,
 		description: <String>,
 		link: <String>,
-		dateTime: <String>
+		dateTime: <Number>
 		read: <Boolean>
 		},
 		{
@@ -65,7 +64,7 @@ Subscribes to the list of notifications for a specific user.
 		title: <String>,
 		description: <String>,
 		link: <String>,
-		dateTime: <String>
+		dateTime: <Number>
 		read: <Boolean>
 		},
    ...
