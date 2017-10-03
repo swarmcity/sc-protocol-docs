@@ -1,6 +1,6 @@
 ## <a name="Hashtags"></a>Hashtags
 
-Returns the list of hashtags interesting for the user, based on geolocation.
+Returns the list of hashtags.
 
 ### Data format
 
@@ -9,13 +9,12 @@ Returns the list of hashtags interesting for the user, based on geolocation.
 ```
 /**
  * Represents the hashtags request
+ * @param {string} channel - the channel to subscribe to: 'hashtags'
  * @request
- * @param {boolean} success - If the request was successful or not
  */
 
-
 {
-	channel: 'hashtags'
+	channel: <String>
 }
 
 ```
@@ -24,28 +23,70 @@ Returns the list of hashtags interesting for the user, based on geolocation.
 **Returns:**
 
 ```
+/**
+ * Represents the hashtags response
+ * @response
+ * @param {number} response - The HTTP response code
+ * @param {string} subscriptionId - String generated on server
+ * @param {array} data - an array of OnHashtagSubscribe objects
+ * @param {string} contractAddress - The address of the hashtag 
+ * @param {string} hashtagName - The hashtag name 
+ * @param {string} hashtagBalance - The SWR balance in in wei or smallest erc20 denomination
+ * @param {number} hashtagItems - The number of hashtag items / deals on chain
+ */
+ 
 { 
-	success: <Boolean>,
-	subscription: <String>
+	response: <Number>,   
+	subscriptionId: <String>,
+	data: 
+	[ 
+		contractAddress: <String> {
+			hashtagName: <String>, 
+			hashtagBalance: <String>,
+			hashtagItems: <Number>
+		},
+		contractAddress: <String> {
+			hashtagName: <String>, 
+			hashtagBalance: <String>,
+			hashtagItems: <Number>
+		},
+		contractAddress: <String> {
+			hashtagName: <String>, 
+			hashtagBalance: <String>,
+			hashtagItems: <Number>
+		},
+	   ...
+	]
 }
 ```
+
+OnHashtagSubscribe will be exectued
 
 ---
 
 **Unsubscribe:**
 
 ```
+/**
+ * Represents the unsubscribe request
+ * @request
+ * @param {string} subscriptionId - String generated on server
+ */
 { 	
-	subscription: <String>
+	subscriptionId: <String>
 }
 ```
 
 **Returns:** 
 
 ```
+/**
+ * Represents the hashtags response
+ * @response
+ * @param {number} response - The HTTP response code
+ */
 { 
-	success: <Boolean>,
-	subscription: <String>
+	response: <Number>
 }
 ```
 
@@ -53,26 +94,75 @@ Returns the list of hashtags interesting for the user, based on geolocation.
 
 ### Events
 
-**onHashtagChanged**
+**hashtagsChanged**
 
 ```
 /**
  * Represents the list of hashtags
- * @response
- * @param {boolean} success - If the request was successful or not
+ * @response {array}
+ * @param {number} response - The HTTP response code
  * @param {string} contractAddress - The address of the hashtag 
  * @param {string} hashtagName - The hashtag name 
  * @param {string} hashtagBalance - The SWR balance in in wei or smallest erc20 denomination
- * @param {number} children - The number of hashtag children / on chain
+ * @param {number} hashtagItems - The number of hashtag items / deals on chain
+ * @param {string} operation - The operation of the hashtag change (added, removed, updated)
  */
-{ 
+ [
+	 {
+		 operation: <String>,
+		 data: {
+			contractAddress: <String> {
+				hashtagName: <String>, 
+				hashtagBalance: <String>,
+				hashtagItems: <Number>
+			}
+		}
+	},
+	{
+		 operation: <String>,
+		 data: {
+			contractAddress: <String> {
+				hashtagName: <String>, 
+				hashtagBalance: <String>,
+				hashtagItems: <Number>
+			}
+		}
+	},
+	...
+]
+```
+
+
+**hashtagsSubscribe**
+
+```
+/**
+ * Represents the list of hashtags
+ * @response {array}
+ * @param {number} response - The HTTP response code
+ * @param {string} contractAddress - The address of the hashtag 
+ * @param {string} hashtagName - The hashtag name 
+ * @param {string} hashtagBalance - The SWR balance in in wei or smallest erc20 denomination
+ * @param {number} hashtagItems - The number of hashtag items / deals on chain
+ */
+[ 
 	contractAddress: <String> {
 		hashtagName: <String>, 
 		hashtagBalance: <String>,
-		children: <Number>
+		hashtagItems: <Number>
 	},
-       ...
-}
+	contractAddress: <String> {
+		hashtagName: <String>, 
+		hashtagBalance: <String>,
+		hashtagItems: <Number>
+	},
+	contractAddress: <String> {
+		hashtagName: <String>, 
+		hashtagBalance: <String>,
+		hashtagItems: <Number>
+	},
+   ...
+]
 ```
 
 ---
@@ -85,6 +175,8 @@ Returns the list of hashtags interesting for the user, based on geolocation.
 ### Worker
 ```
 // Insert Sponnet's unit test function
+subscribe to topic / get blocks in / ...
+
 ```
 
 
