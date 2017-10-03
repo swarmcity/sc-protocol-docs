@@ -16,81 +16,31 @@
 - [getDealList](#getDealList)
 
 ---
-## <a name="connected"></a>Connected
-Connecting to socket.io, listen to event "Connected"
+STRUCT
 
-Returns:
-
-```
+/**
+ * Represents a users balance
+ * @response
+ * @param {boolean} success - If the request was successful or not
+ * @param {number} balance - The balance in in wei or smallest erc20 denomination
+ * @param {string} subscription - The socket id
+ */
 { 
-	version: <String>
+    success: <Boolean>, 
+    balance: <Number>,  
+    subscription: <String> 
 }
-```
-
----
-## <a name="userbalance"></a>UserBalance
-
-Subscribe:
-
-```
-{
-	channel: 'UserBalance',
-	args: {
-		pubkey: <String>
-	}
-}
-```
-
-Returns:
-
-```
-{ 
-	success: <Boolean>,
-	balance: <Number>,
-	subscription: <String>
-}
-```
-
-Unsubscribe:
-
-```
-{ 	
-	subscription: <String>
-}
-```
-
-Returns:
-
-```
-{ 
-	success: <Boolean>
-}
-```
-
-Events: 
-
-**onBalanceChanged**
-
-```
-{
-	pubkey: <String>,
-	balance: <Number>
-}
-```
 
 
 ---
 
-## <a name="getHashtagList"></a>getHashtagList
-
-Returns the list of hashtags interesting for the user, based on geolocation.
+## <a name="getUserRep"></a>getUserRep
 
 Call:
 
 ```
 {
-	geohash: <String>,
-	// Time range?	
+	pubkey: <String>		// 0x...	
 }
 ```
 
@@ -99,74 +49,33 @@ Returns:
 ```
 { 
 	'0x...': {
-		name:'Pioneer', 
-		balance: 20,
-		deals: 30
+		SWR: <String>, 	// 'NeedARide'
+		Balance: <Number>  // smallest denomination (1e18)
 	},
 	'0x...': {
-		name:'NeedARide', 
-		balance: 20,
-		deals: 30
+		SWR: <String>, 	// 'NeedToShop'
+		Balance: <Number>  // smallest denomination (1e18)
 	},
 	'0x...': {
-		name:'NeedToShop', 
-		balance: 20,
-		deals: 30
+		SWR: <String>, 	// 'SwarmBnB'
+		Balance: <Number>  // smallest denomination (1e18)
 	}
 }
 ```
 
 ---
 
-## <a name="getDealList"></a>getDealList
-
-Call:
-
-```
-{
-	args: {
-		filter: {
-			user: <String>,
-			hashtag: <String>,
-			geolocation: <String>,
-			timerange: { 
-				from: <DateTime>, 
-				to: <DateTime> 
-			}
-		}
-	}	
-}
-```
-
-Returns:
-
-```
-{ 
-	'0x...': {
-		Data
-	},
-	'0x...': {
-		Data
-	},
-	'0x...': {
-		Data
-	}
-}
-```
----
-
-## <a name="Deals"></a>Deals
+## <a name="Hashtags"></a>Hashtags
 
 Subscribe:
 
 ```
 {
-	channel: 'Deals',
+	channel: 'Hashtags',
 	args: {
 		filter: {
 			user: <String>,
-			dealfilter: <Array> // an array of dealIDs, default "all"
-			hashtag: <String>,
+			hashtagfilter: <Array> // an array of hashtags, default "all"
 			geolocation: <String>,
 			timerange: { 
 				from: <DateTime>, 
@@ -205,13 +114,17 @@ Returns:
 
 Events: 
 
-**onDealUpdated**
+**onHashtagUpdated**
 
 ```
 {
 	key: DealID
-	data: {dealData}
+	data: {hashtagData}
 }
 ```
+
+---
+
+
 
 ---
