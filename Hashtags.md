@@ -1,23 +1,59 @@
-## <a name="getHashtagList"></a>getHashtagList
+## <a name="Hashtags"></a>Hashtags
 
 Returns the list of hashtags interesting for the user, based on geolocation.
 
-Call:
+### Data format
+
+**Subscribe:**
 
 ```
 /**
  * Represents the hashtags request
  * @request
  * @param {boolean} success - If the request was successful or not
- * @param {string} geohash - The user's geolocation. When not available, return worldwide
  */
+
+
 {
-	geohash: <String>,
-	// Time range?	
+	channel: 'hashtags'
+}
+
+```
+
+
+**Returns:**
+
+```
+{ 
+	success: <Boolean>,
+	subscription: <String>
 }
 ```
 
-Returns:
+---
+
+**Unsubscribe:**
+
+```
+{ 	
+	subscription: <String>
+}
+```
+
+**Returns:** 
+
+```
+{ 
+	success: <Boolean>,
+	subscription: <String>
+}
+```
+
+---
+
+### Events
+
+**onHashtagChanged**
 
 ```
 /**
@@ -38,5 +74,18 @@ Returns:
        ...
 }
 ```
+
+---
+
+### Client
+```
+// Insert Sponnet's unit test function
+```
+
+### Worker
+```
+// Insert Sponnet's unit test function
+```
+
 
 

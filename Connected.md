@@ -2,9 +2,12 @@
 
 Returns the list of hashtags interesting for the user, based on geolocation.
 
+### Data
+
 Call:
 
 ```
+
 {
 	geohash: <String>,
 	// Time range?	
@@ -32,3 +35,23 @@ Returns:
        ...
 }
 ```
+
+### Client
+Client implementation
+
+```
+sends request to node
+
+function getHashtagList() {
+}
+``` 
+
+### Worker
+Worker implementeation
+
+```
+gets hashtags from firebase 
+```
+
+- health reporting
+- 
