@@ -30,6 +30,7 @@ Returns the list of items in a specific hashtag.
  * @param {number} response - The HTTP response code
  * @param {string} subscriptionId - String generated on server
  * @param {array} itemsData - an array of OnHashtagItemsSubscribe objects
+ * @param {string} hashtagName - the name of the hashtag contract
  * @param {object} hashtagData - the meta data of the hashtag contract
  * @param {string} hashtagDescription - The description of the hashtag
  * @param {number} hashtagItems - The number of hashtag items / deals on chain
@@ -44,6 +45,7 @@ Returns the list of items in a specific hashtag.
 	subscriptionId: <String>,
 	hashtagData: {
 		hashtagMaintainer: <String>,
+		hashtagName: <String>,
 		hashtagDescription: <String>,
 		hashtagItems: <Number>,
 		hashtagContact: [
